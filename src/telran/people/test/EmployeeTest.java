@@ -17,8 +17,7 @@ Employee[] empl = {
 
 	@Test
 	void test() {
-		Arrays.sort(empl);
-		
+		Arrays.sort(empl);	
 		Employee[] expected = {
 				new Employee(112, "Moshe",1981,"Analitics", 12000),
 				new Employee(178, "Shmulik",1992,"Salesman", 13000),

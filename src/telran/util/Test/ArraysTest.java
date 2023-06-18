@@ -43,27 +43,75 @@ public class ArraysTest {
 //	assertArrayEquals(expected, array);
 //}
 
+//@Test
+//void bubbleSortComparatorTest() {
+//	Integer [] expected = {10, 100, 200, 5, -5};
+//	Integer [] array = {10, 5,-5, 100, 200};
+//	bubbleSort(array, new EvenOddComparator());
+//	assertArrayEquals(expected,array);
+//}
+//@Test
+//void EvenOddComparatorTest() {
+//	Comparator<Integer> comp = new EvenOddComparator();
+//	assertTrue(comp.compare(4, 3) < 0);
+//	assertTrue(comp.compare(7, 6) > 0);
+//	assertTrue(comp.compare(5, 5) == 0);
+//} 
+//@Test
+//void standardSortComparatorTest() {
+//	Integer [] array = {10, 5, 110, 9, 22, 33};
+//	Integer [] expected = {10, 110, 22, 5, 33, 9};
+//	Arrays.sort(array, new DigitsSumComparator());
+//	assertArrayEquals(expected, array);
+//}
 @Test
-void bubbleSortComparatorTest() {
+void bubbleSortComparatorTestLambda() {
 	Integer [] expected = {10, 100, 200, 5, -5};
 	Integer [] array = {10, 5,-5, 100, 200};
-	bubbleSort(array, new EvenOddComparator());
+	bubbleSort(array, (a, b)-> compare(a, b));/*lambda expression*/
+	bubbleSort(array, (o1, o2)-> {
+		int res = 1;
+	if (o1 % 2 == 0 && o2 % 2 != 0) {
+		res = -1;
+	} else if(o1 % 2 != 0 && o2 % 2 != 0) {
+		res = o2 - o1;
+	} else if(o1 % 2 == 0 && o2 % 2 == 0) {
+		res = o1 - o2;
+	}
+	return res;
+	});/*Lambda closure*/
+	bubbleSort(array, ArraysTest::compare);/*Method reference*/
+	System.out.println(Arrays.toString(array));
 	assertArrayEquals(expected,array);
 }
-@Test
-void EvenOddComparatorTest() {
-	Comparator<Integer> comp = new EvenOddComparator();
-	assertTrue(comp.compare(4, 3) < 0);
-	assertTrue(comp.compare(7, 6) > 0);
-	assertTrue(comp.compare(5, 5) == 0);
-} 
-@Test
-void standardSortComparatorTest() {
-	Integer [] array = {10, 5, 110, 9, 22, 33};
-	Integer [] expected = {10, 110, 22, 5, 33, 9};
-	Arrays.sort(array, new DigitsSumComparator());
-	assertArrayEquals(expected, array);
+static private int compare(Integer o1, Integer o2) {
+	int res = 1;
+	if (o1 % 2 == 0 && o2 % 2 != 0) {
+		res = -1;
+	} else if(o1 % 2 != 0 && o2 % 2 != 0) {
+		res = o2 - o1;
+	} else if(o1 % 2 == 0 && o2 % 2 == 0) {
+		res = o1 - o2;
+	}
+	return res;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
