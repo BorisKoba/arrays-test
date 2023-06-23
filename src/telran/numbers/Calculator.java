@@ -9,7 +9,12 @@ public class Calculator {
 			(a, b) -> a + b,
 			(a, b) -> a - b,
 			(a, b) -> a * b,
-			(a, b) -> a / b
+			(a, b) ->{
+				if(b == 0) {
+					throw new ArithmeticException("division of 0");
+				}
+				return a / b;
+			}
 	};
 	static char[] operations = {
 			'+', '-', '*','/'
@@ -17,8 +22,9 @@ public class Calculator {
 	static public double calculate(CalcData cd) {
 		int index = findIndex(cd.operation);
 		if(index < 0) {
-			
+			throw new UnsupportedOperationException("unsupported operation" + cd.operation);
 		}
+		
 		
 		
 		return operators[index].apply(cd.op1, cd.op2);
