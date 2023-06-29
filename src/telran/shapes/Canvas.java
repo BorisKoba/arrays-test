@@ -5,11 +5,12 @@ import java.util.function.Predicate;
 
 public class Canvas implements Shape, Iterable<Shape> {
     private Shape[] shapes = new Shape[0];
+     int current = 
     private class CanvasIterator implements Iterator<Shape> {
-
+    	
 		@Override
 		public boolean hasNext() {
-			// TODO Auto-generated method stub
+			
 			return false;
 		}
 
